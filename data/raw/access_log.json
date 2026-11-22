@@ -1,0 +1,25 @@
+{
+  "wb_countries": {
+    "url": "https://api.worldbank.org/v2/country?format=json",
+    "accessed": "2026-11-22"
+  },
+  "wb_indicators": {
+    "url": "https://api.worldbank.org/v2/country/all/indicator/<code>?format=json&date=2015:2023",
+    "codes": [
+      "NY.GDP.MKTP.KD.ZG",
+      "FP.CPI.TOTL.ZG",
+      "SL.UEM.TOTL.ZS",
+      "SP.DYN.IMRT.IN",
+      "EG.ELC.ACCS.ZS",
+      "IT.NET.USER.ZS",
+      "NV.AGR.TOTL.ZS",
+      "NV.IND.TOTL.ZS",
+      "NE.TRD.GNFS.ZS"
+    ],
+    "accessed": "2026-11-22"
+  },
+  "undp_hdi": {
+    "url": "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
+    "accessed": "2026-11-22"
+  }
+}

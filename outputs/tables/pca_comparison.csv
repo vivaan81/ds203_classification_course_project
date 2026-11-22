@@ -1,0 +1,7 @@
+model,cv_f1_mean,cv_f1_std,val_f1,val_bal_acc,best_params,pca
+Logistic Regression,0.8758351028181423,0.06591107258193915,0.8030741659773918,0.7695906432748538,"{'C': 10, 'class_weight': 'balanced'}",without PCA
+Decision Tree,0.8590902762951492,0.0748190465430184,0.7173054587688735,0.6807017543859649,"{'class_weight': None, 'max_depth': None, 'min_samples_leaf': 1}",without PCA
+Random Forest,0.9240874915555223,0.056140207350680885,0.7552602436323367,0.7157894736842105,"{'class_weight': None, 'max_depth': 5, 'max_features': 'sqrt', 'min_samples_leaf': 1}",without PCA
+Logistic Regression,0.8772023817803868,0.05233051310557446,0.8214285714285715,0.7824561403508771,"{'C': 1, 'class_weight': None, 'n_components': 2}",with PCA
+Decision Tree,0.8682953538835892,0.06241490665064904,0.8214285714285715,0.7824561403508771,"{'class_weight': None, 'max_depth': 4, 'min_samples_leaf': 1, 'n_components': 5}",with PCA
+Random Forest,0.8559710387078807,0.09941866148093077,0.8214285714285715,0.7824561403508771,"{'class_weight': 'balanced', 'max_depth': 5, 'max_features': 'sqrt', 'min_samples_leaf': 3, 'n_components': 3}",with PCA

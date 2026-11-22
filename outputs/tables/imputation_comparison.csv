@@ -1,0 +1,13 @@
+model,cv_f1_mean,cv_f1_std,val_f1,val_bal_acc,best_params,imputation
+Logistic Regression,0.8574029771398191,0.060939821874368874,0.7064564564564565,0.6947368421052632,"{'C': 10, 'class_weight': 'balanced'}",median
+Decision Tree,0.8475471500575822,0.09297115875902312,0.7557878435927217,0.7204678362573099,"{'class_weight': 'balanced', 'max_depth': 4, 'min_samples_leaf': 3}",median
+Random Forest,0.9090970891280488,0.05574847508581079,0.7419400056069526,0.7204678362573099,"{'class_weight': None, 'max_depth': None, 'max_features': 0.5, 'min_samples_leaf': 1}",median
+Logistic Regression,0.8574029771398191,0.060939821874368874,0.7064564564564565,0.6947368421052632,"{'C': 10, 'class_weight': 'balanced'}",mean
+Decision Tree,0.8475471500575822,0.09297115875902312,0.7557878435927217,0.7204678362573099,"{'class_weight': 'balanced', 'max_depth': 4, 'min_samples_leaf': 3}",mean
+Random Forest,0.9165125480652471,0.04644480897125945,0.7419400056069526,0.7204678362573099,"{'class_weight': None, 'max_depth': None, 'max_features': 0.5, 'min_samples_leaf': 1}",mean
+Logistic Regression,0.8690504644545565,0.05741959370681867,0.8030741659773918,0.7695906432748538,"{'C': 10, 'class_weight': 'balanced'}",median + indicators
+Decision Tree,0.8590902762951492,0.0748190465430184,0.7173054587688735,0.6807017543859649,"{'class_weight': None, 'max_depth': None, 'min_samples_leaf': 1}",median + indicators
+Random Forest,0.9133915208595514,0.09126691096252622,0.7419400056069526,0.7204678362573099,"{'class_weight': None, 'max_depth': None, 'max_features': 0.5, 'min_samples_leaf': 1}",median + indicators
+Logistic Regression,0.8758351028181423,0.06591107258193915,0.8030741659773918,0.7695906432748538,"{'C': 10, 'class_weight': 'balanced'}",mean + indicators
+Decision Tree,0.8590902762951492,0.0748190465430184,0.7173054587688735,0.6807017543859649,"{'class_weight': None, 'max_depth': None, 'min_samples_leaf': 1}",mean + indicators
+Random Forest,0.9240874915555223,0.056140207350680885,0.7552602436323367,0.7157894736842105,"{'class_weight': None, 'max_depth': 5, 'max_features': 'sqrt', 'min_samples_leaf': 1}",mean + indicators

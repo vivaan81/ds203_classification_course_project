@@ -1,0 +1,194 @@
+iso3,country,hdi_class,split
+AFG,Afghanistan,0,train
+AGO,Angola,1,train
+ALB,Albania,2,train
+AND,Andorra,2,train
+ARE,United Arab Emirates,2,train
+ARG,Argentina,2,val
+ARM,Armenia,2,train
+ATG,Antigua and Barbuda,2,train
+AUS,Australia,2,test
+AUT,Austria,2,val
+AZE,Azerbaijan,1,train
+BDI,Burundi,0,train
+BEL,Belgium,2,train
+BEN,Benin,0,train
+BFA,Burkina Faso,0,val
+BGD,Bangladesh,1,test
+BGR,Bulgaria,2,train
+BHR,Bahrain,2,train
+BHS,Bahamas,2,test
+BIH,Bosnia and Herzegovina,2,train
+BLR,Belarus,2,train
+BLZ,Belize,1,train
+BOL,Bolivia (Plurinational State of),1,train
+BRA,Brazil,1,train
+BRB,Barbados,2,val
+BRN,Brunei Darussalam,2,val
+BTN,Bhutan,1,train
+BWA,Botswana,1,val
+CAF,Central African Republic,0,train
+CAN,Canada,2,val
+CHE,Switzerland,2,val
+CHL,Chile,2,val
+CHN,China,1,train
+CIV,Côte d'Ivoire,1,val
+CMR,Cameroon,1,val
+COD,Congo (Democratic Republic of the),0,train
+COG,Congo,1,train
+COL,Colombia,1,val
+COM,Comoros,1,train
+CPV,Cabo Verde,1,test
+CRI,Costa Rica,2,train
+CUB,Cuba,1,train
+CYP,Cyprus,2,train
+CZE,Czechia,2,test
+DEU,Germany,2,test
+DJI,Djibouti,0,test
+DMA,Dominica,1,train
+DNK,Denmark,2,train
+DOM,Dominican Republic,1,train
+DZA,Algeria,1,val
+ECU,Ecuador,1,train
+EGY,Egypt,1,val
+ERI,Eritrea,0,test
+ESP,Spain,2,train
+EST,Estonia,2,val
+ETH,Ethiopia,0,train
+FIN,Finland,2,test
+FJI,Fiji,1,test
+FRA,France,2,test
+FSM,Micronesia (Federated States of),1,val
+GAB,Gabon,1,train
+GBR,United Kingdom,2,train
+GEO,Georgia,2,train
+GHA,Ghana,1,train
+GIN,Guinea,0,train
+GMB,Gambia,0,test
+GNB,Guinea-Bissau,0,train
+GNQ,Equatorial Guinea,1,train
+GRC,Greece,2,train
+GRD,Grenada,1,val
+GTM,Guatemala,1,train
+GUY,Guyana,1,val
+HKG,"Hong Kong, China (SAR)",2,train
+HND,Honduras,1,train
+HRV,Croatia,2,test
+HTI,Haiti,1,train
+HUN,Hungary,2,test
+IDN,Indonesia,1,train
+IND,India,1,val
+IRL,Ireland,2,test
+IRN,Iran (Islamic Republic of),1,train
+IRQ,Iraq,1,train
+ISL,Iceland,2,val
+ISR,Israel,2,test
+ITA,Italy,2,train
+JAM,Jamaica,1,train
+JOR,Jordan,1,val
+JPN,Japan,2,train
+KAZ,Kazakhstan,2,test
+KEN,Kenya,1,train
+KGZ,Kyrgyzstan,1,val
+KHM,Cambodia,1,train
+KIR,Kiribati,1,val
+KNA,Saint Kitts and Nevis,2,test
+KOR,Korea (Republic of),2,train
+KWT,Kuwait,2,train
+LAO,Lao People's Democratic Republic,1,test
+LBN,Lebanon,1,train
+LBR,Liberia,0,train
+LBY,Libya,1,val
+LCA,Saint Lucia,1,train
+LIE,Liechtenstein,2,test
+LKA,Sri Lanka,1,train
+LSO,Lesotho,1,test
+LTU,Lithuania,2,train
+LUX,Luxembourg,2,val
+LVA,Latvia,2,train
+MAR,Morocco,1,val
+MDA,Moldova (Republic of),1,test
+MDG,Madagascar,0,train
+MDV,Maldives,1,val
+MEX,Mexico,1,test
+MHL,Marshall Islands,1,val
+MKD,North Macedonia,2,test
+MLI,Mali,0,test
+MLT,Malta,2,train
+MMR,Myanmar,1,train
+MNE,Montenegro,2,val
+MNG,Mongolia,1,train
+MOZ,Mozambique,0,train
+MRT,Mauritania,1,test
+MUS,Mauritius,2,val
+MWI,Malawi,0,val
+MYS,Malaysia,2,train
+NAM,Namibia,1,train
+NER,Niger,0,train
+NGA,Nigeria,1,train
+NIC,Nicaragua,1,test
+NLD,Netherlands,2,train
+NOR,Norway,2,train
+NPL,Nepal,1,test
+NRU,Nauru,1,test
+NZL,New Zealand,2,train
+OMN,Oman,2,val
+PAK,Pakistan,0,train
+PAN,Panama,2,train
+PER,Peru,1,train
+PHL,Philippines,1,test
+PLW,Palau,1,train
+PNG,Papua New Guinea,1,test
+POL,Poland,2,train
+PRT,Portugal,2,train
+PRY,Paraguay,1,train
+PSE,"Palestine, State of",1,train
+QAT,Qatar,2,train
+ROU,Romania,2,train
+RUS,Russian Federation,2,test
+RWA,Rwanda,1,train
+SAU,Saudi Arabia,2,train
+SDN,Sudan,0,test
+SEN,Senegal,0,val
+SGP,Singapore,2,val
+SLB,Solomon Islands,1,train
+SLE,Sierra Leone,0,train
+SLV,El Salvador,1,val
+SMR,San Marino,2,train
+SOM,Somalia,0,train
+SRB,Serbia,2,val
+SSD,South Sudan,0,val
+STP,Sao Tome and Principe,1,train
+SUR,Suriname,1,train
+SVK,Slovakia,2,train
+SVN,Slovenia,2,train
+SWE,Sweden,2,train
+SWZ,Eswatini (Kingdom of),1,train
+SYC,Seychelles,2,train
+SYR,Syrian Arab Republic,1,train
+TCD,Chad,0,train
+TGO,Togo,1,train
+THA,Thailand,1,train
+TJK,Tajikistan,1,test
+TKM,Turkmenistan,1,train
+TLS,Timor-Leste,1,train
+TON,Tonga,1,test
+TTO,Trinidad and Tobago,2,train
+TUN,Tunisia,1,test
+TUR,Türkiye,2,train
+TUV,Tuvalu,1,train
+TZA,Tanzania (United Republic of),1,test
+UGA,Uganda,1,test
+UKR,Ukraine,1,train
+URY,Uruguay,2,train
+USA,United States,2,train
+UZB,Uzbekistan,1,train
+VCT,Saint Vincent and the Grenadines,1,train
+VEN,Venezuela (Bolivarian Republic of),1,train
+VNM,Viet Nam,1,train
+VUT,Vanuatu,1,test
+WSM,Samoa,1,train
+YEM,Yemen,0,val
+ZAF,South Africa,1,train
+ZMB,Zambia,1,val
+ZWE,Zimbabwe,1,train

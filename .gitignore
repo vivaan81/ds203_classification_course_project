@@ -1,0 +1,12 @@
+# python / jupyter
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# course material and scratch folders (not part of our submission)
+docs_instructions/
+notebooks_lectures/
+data_we_found/
+
+# editor settings
+.vscode/

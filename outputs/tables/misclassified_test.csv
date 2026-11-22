@@ -1,0 +1,13 @@
+country,region,hdi,true,Logistic Regression,Decision Tree,Random Forest,dist_to_threshold
+Mali,Sub-Saharan Africa,0.419,Low,Low,Very High,Low,0.131
+Eritrea,Sub-Saharan Africa,0.503,Low,Low,Medium/High,Low,0.047
+Sudan,Sub-Saharan Africa,0.511,Low,Medium/High,Medium/High,Medium/High,0.039
+Djibouti,"Middle East, North Africa, Afghanistan & Pakistan",0.513,Low,Medium/High,Very High,Medium/High,0.037
+Gambia,Sub-Saharan Africa,0.524,Low,Medium/High,Medium/High,Medium/High,0.026
+Tanzania (United Republic of),Sub-Saharan Africa,0.555,Medium/High,Low,Medium/High,Low,0.005
+Papua New Guinea,East Asia & Pacific,0.576,Medium/High,Low,Medium/High,Low,0.026
+Uganda,Sub-Saharan Africa,0.582,Medium/High,Low,Medium/High,Low,0.032
+Nauru,East Asia & Pacific,0.703,Medium/High,Medium/High,Very High,Medium/High,0.097
+Mexico,Latin America & Caribbean,0.789,Medium/High,Very High,Medium/High,Medium/High,0.011
+Saint Kitts and Nevis,Latin America & Caribbean,0.84,Very High,Very High,Medium/High,Medium/High,0.04
+Ireland,Europe & Central Asia,0.949,Very High,Very High,Medium/High,Very High,0.149

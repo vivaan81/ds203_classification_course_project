@@ -1,0 +1,16 @@
+model,cv_f1_mean,cv_f1_std,val_f1,val_bal_acc,best_params,feature_set
+Logistic Regression,0.8391136604032013,0.062817240323676,0.7367127496159754,0.7029239766081871,"{'C': 100, 'class_weight': None}",numerical only
+Decision Tree,0.854263942037532,0.09759795330650185,0.7557878435927217,0.7204678362573099,"{'class_weight': 'balanced', 'max_depth': 4, 'min_samples_leaf': 3}",numerical only
+Random Forest,0.9138209160257889,0.06754906348000674,0.7222222222222222,0.6982456140350877,"{'class_weight': None, 'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1}",numerical only
+Logistic Regression,0.6390698293047197,0.1115275290074034,0.604040404040404,0.6912280701754385,"{'C': 0.1, 'class_weight': 'balanced'}",categorical only
+Decision Tree,0.6553896103896104,0.1073883564401922,0.6210170176235924,0.6678362573099416,"{'class_weight': 'balanced', 'max_depth': 2, 'min_samples_leaf': 1}",categorical only
+Random Forest,0.6192918587372753,0.09937000412515329,0.5521885521885522,0.624561403508772,"{'class_weight': 'balanced', 'max_depth': None, 'max_features': 0.5, 'min_samples_leaf': 1}",categorical only
+Logistic Regression,0.8758351028181423,0.06591107258193915,0.8030741659773918,0.7695906432748538,"{'C': 10, 'class_weight': 'balanced'}",combined (num + region + sector)
+Decision Tree,0.8590902762951492,0.0748190465430184,0.7173054587688735,0.6807017543859649,"{'class_weight': None, 'max_depth': None, 'min_samples_leaf': 1}",combined (num + region + sector)
+Random Forest,0.9240874915555223,0.056140207350680885,0.7552602436323367,0.7157894736842105,"{'class_weight': None, 'max_depth': 5, 'max_features': 'sqrt', 'min_samples_leaf': 1}",combined (num + region + sector)
+Logistic Regression,0.8758351028181423,0.06591107258193915,0.7839912280701755,0.752046783625731,"{'C': 10, 'class_weight': 'balanced'}",num + region
+Decision Tree,0.8506974673073744,0.08726672788634753,0.7557878435927217,0.7204678362573099,"{'class_weight': 'balanced', 'max_depth': 3, 'min_samples_leaf': 1}",num + region
+Random Forest,0.9227730944516515,0.052804450323371645,0.7222222222222222,0.6982456140350877,"{'class_weight': None, 'max_depth': None, 'max_features': 0.5, 'min_samples_leaf': 1}",num + region
+Logistic Regression,0.8325679596573391,0.07319918832675469,0.7647509578544062,0.7473684210526317,"{'C': 0.1, 'class_weight': None}",num + DominantSector
+Decision Tree,0.854263942037532,0.09759795330650185,0.7557878435927217,0.7204678362573099,"{'class_weight': 'balanced', 'max_depth': 4, 'min_samples_leaf': 3}",num + DominantSector
+Random Forest,0.9138209160257889,0.06754906348000674,0.841533501541912,0.8046783625730994,"{'class_weight': None, 'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1}",num + DominantSector
