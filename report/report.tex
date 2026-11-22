@@ -18,8 +18,8 @@
 \setlength{\parskip}{3pt}
 
 \title{\vspace{-1.6cm}\textbf{Classifying Countries by Human Development Index\\from Socioeconomic Indicators}\vspace{-0.3cm}}
-\author{Vivaan Singhania \quad Shivam Kushwaha \quad Tanush Chilakwad\\[2pt]\small DS203 Course Project}
-\date{\vspace{-0.6cm}}
+\author{Vivaan Singhania\\\small 25B2136 \and Shivam Kushwaha\\\small 25B2146 \and Tanush Chilakwad\\\small 25B2208}
+\date{\vspace{-0.3cm}\small DS203 Course Project\vspace{-0.4cm}}
 
 \begin{document}
 \maketitle
@@ -70,8 +70,8 @@ predictor values were kept in the dataset so that imputation could be studied as
 \subsection{Preprocessing}
 
 We used a stratified 60/20/20 train/validation/test split with a fixed seed, giving 115/39/39 countries with the
-same class proportions in each part. All preprocessing was built with scikit-learn \cite{sklearn}
-\texttt{Pipeline} and \texttt{ColumnTransformer} objects, so every learned step is fitted on training data only
+same class proportions in each part. All preprocessing was built using the \texttt{Pipeline} and
+\texttt{ColumnTransformer} classes from scikit-learn, so every learned step is fitted on training data only
 and refitted inside each cross-validation fold. The steps were chosen based on the exploratory analysis in
 Section~\ref{sec:eda}:
 \begin{itemize}

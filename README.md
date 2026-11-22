@@ -1,6 +1,12 @@
 # Classifying Countries by Human Development Index (DS203 Project)
 
-**Group members:** Vivaan Singhania, Shivam Kushwaha, Tanush Chilakwad
+**Group members:**
+
+| Name | Roll number |
+|---|---|
+| Vivaan Singhania | 25B2136 |
+| Shivam Kushwaha | 25B2146 |
+| Tanush Chilakwad | 25B2208 |
 
 ## What this project does
 
