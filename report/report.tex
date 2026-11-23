@@ -120,8 +120,8 @@ and unemployment do not differ significantly between classes ($p>0.05$). The fou
 strongly correlated with each other ($|\rho|=0.66$--$0.83$), so they largely measure one underlying ``level of
 development''. Region is clearly associated with the class (Sub-Saharan Africa contains 22 of the 26 Low
 countries), while \texttt{DominantSector} is ``Services'' for 91\% of countries. Missing data is not random:
-31\% of Low countries have at least one missing value, compared to 12\% of Very High countries ($\chi^2=6.68$,
-$p=0.036$). These are mostly conflict-affected states and microstates.
+31\% of Low and 27\% of Medium/High countries have at least one missing value, compared to 12\% of Very High
+countries ($\chi^2=6.68$, $p=0.036$). Many of these are conflict-affected states or small island states.
 
 \begin{figure}[h]
   \centering
@@ -218,8 +218,9 @@ adds nothing, as expected for a feature that is 91\% one category and derived fr
 
 On the test set the random forest and logistic regression are effectively tied (macro F1 0.729 vs 0.726, both
 82\% accuracy). Very High is classified almost perfectly (F1 $\approx$ 0.97) and Medium/High well (0.82), but Low
-is hard: both models identify only 2 of the 5 Low countries (F1 = 0.40). As Figure~\ref{fig:cm} shows, mistakes
-only happen between neighbouring classes. The fully grown decision tree misses every Low country. Its accuracy of
+is hard: both models identify only 2 of the 5 Low countries (F1 = 0.40). As Figure~\ref{fig:cm} shows, both
+only make mistakes between neighbouring classes. The fully grown decision tree misses every Low country and even
+places two of them (Mali and Djibouti) in Very High. Its accuracy of
 0.795 hides this, while its macro F1 of 0.565 shows it, which is why we did not rely on accuracy alone. The drop
 from CV (0.92) to test (0.73) is mainly due to the Low class, where each of the 5 test countries is worth 20\% of
 recall, together with the optimism of selecting the best of many CV configurations.
@@ -249,24 +250,24 @@ belong to infant mortality (Low $+3.0$, Very High $-3.6$), internet use (Low $-3
 agriculture share (Low $+2.0$, Very High $-2.4$). Electricity access mainly separates Low from Medium/High
 ($-1.3$ vs $+1.3$), which matches its ceiling at 100\%. Because these features are strongly correlated, the
 individual coefficients are not stable and only their overall direction should be trusted. Random forest
-permutation importance (Figure~\ref{fig:imp}) ranks the same features at the top, followed by region. Inflation,
-unemployment and trade contribute almost nothing. The importance of \texttt{DominantSector} is misleading: in the
+permutation importance (Figure~\ref{fig:imp}) puts infant mortality, internet use and agriculture share at the
+top, with region almost level and then electricity access. Inflation, unemployment and trade contribute little. The importance of \texttt{DominantSector} is misleading: in the
 test set only two countries are not ``Services'' (both have a missing sector), so its effect comes from those two
-missing values. Most misclassified countries lie close to a class boundary, for example Tanzania (0.555), Gambia
-(0.524), Mexico (0.789), Djibouti (0.513) and Sudan (0.511). The hard cut-offs turn small differences in the
+missing values. All seven random forest errors lie within 0.04 of a class boundary, for example Tanzania (0.555),
+Gambia (0.524), Djibouti (0.513) and Sudan (0.511). The hard cut-offs turn small differences in the
 score into wrong classes.
 
 \subsection{Limitations and conclusion}
 
 The main limitations are the small sample (193 countries is every country with an HDI, so the 39-country test set
-gives a noisy estimate), the class imbalance (only 5 Low test countries), missing data concentrated in low-HDI
-countries, and some predictors coming from 2020--2022 while the HDI is from 2023. Most importantly, the results
-are associations. Several predictors, such as infant mortality, are themselves outcomes of development, so we
-cannot claim that changing an indicator would change a country's HDI.
+gives a noisy estimate), the class imbalance (only 5 Low test countries), more missing data outside the Very High
+class, and some predictors coming from 2020--2022 while the HDI is from 2023. Most importantly, the results
+are associations. We cannot claim that changing an indicator would change a country's HDI, and infant
+mortality is closely related to life expectancy, which is part of the HDI.
 
-Overall, a handful of widely available indicators (infant mortality, internet use, agriculture share and
-electricity access) place countries in the right HDI category about 82\% of the time, with most errors near the
-0.550 and 0.800 cut-offs. Since the class information is close to one-dimensional, predicting the HDI score
+Overall, the random forest uses nine widely available indicators, region and dominant sector to place 82\% of the
+test countries in the right HDI category, with all of its errors near the 0.550 and 0.800 cut-offs. Infant mortality,
+internet use, agriculture share and electricity access are the most informative indicators. Since the class information is close to one-dimensional, predicting the HDI score
 directly with regression would be a natural next step.
 
 \begin{thebibliography}{9}\small

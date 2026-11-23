@@ -40,10 +40,10 @@ target leakage we do not use the HDI score itself, life expectancy, years of sch
 
 - The random forest was chosen because it had the best cross-validation score on the training set
   (macro F1 0.924 ± 0.056). On the test set it is basically tied with logistic regression.
-- Infant mortality, internet use, agriculture share and electricity access are the most informative features.
-  Region helps a bit, and DominantSector doesn't help.
-- Very High countries are classified almost perfectly. Low is the hardest class, and most mistakes are countries
-  very close to the 0.550 or 0.800 cut-offs.
+- Infant mortality, internet use, agriculture share and electricity access are the most informative indicators.
+  Adding region mainly helps logistic regression, and DominantSector doesn't help.
+- Very High countries are classified almost perfectly. Low is the hardest class (the random forest
+  finds 2 of the 5 Low test countries). All 7 random forest mistakes are within 0.04 of the 0.550 or 0.800 cut-offs.
 
 The full analysis and discussion are in the two notebooks.
 
@@ -65,15 +65,19 @@ The full analysis and discussion are in the two notebooks.
 ├── outputs/
 │   ├── figures/                all plots (created by the notebooks)
 │   └── tables/                 result tables as CSV (created by the notebooks)
-└── report/
-    ├── report.tex              the LaTeX source of our report
-    ├── report.pdf              the compiled report
-    └── figures/                copies of the figures used in the report
+├── report/
+│   ├── report.tex              the LaTeX source of our report
+│   ├── report.pdf              the compiled report
+│   └── figures/                copies of the figures used in the report
+└── presentation/
+    ├── HDI_presentation.pptx   the slides for our video
+    ├── video_script.md         what each of us says in the video
+    └── figures/                the chart used in the slides
 ```
 
 ## Setup
 
-You need Python 3.10 or newer.
+You need Python 3.10 or newer (we used 3.10).
 
 ```bash
 python3 -m venv .venv
