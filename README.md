@@ -70,9 +70,8 @@ The full analysis and discussion are in the two notebooks.
 │   ├── report.pdf              the compiled report
 │   └── figures/                copies of the figures used in the report
 └── presentation/
-    ├── HDI_presentation.pptx   the slides for our video
-    ├── video_script.md         what each of us says in the video
-    └── figures/                the chart used in the slides
+    ├── HDI_presentation.pdf    the slides for our video
+    └── video_script.md         what each of us says in the video
 ```
 
 ## Setup
