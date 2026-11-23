@@ -65,7 +65,8 @@ Monaco have no 2023 HDI and were dropped, which leaves \textbf{193 countries}: 2
 recent value from 2020 to 2022 and recorded the year used. This affected at most 6 countries per feature, and no
 value after 2023 was used. To avoid target leakage we excluded the HDI score itself, life expectancy, years of
 schooling, GNI per capita and the World Bank income group (which is defined from GNI per capita). Missing
-predictor values were kept in the dataset so that imputation could be studied as part of the pipeline.
+predictor values were left in the dataset and filled inside the modelling pipeline, so that imputation is
+learned from training data only.
 
 \subsection{Preprocessing}
 
@@ -88,8 +89,8 @@ Section~\ref{sec:eda}:
 
 \subsection{Models, tuning and evaluation}
 
-We trained the four models required by the project specification. Multinomial logistic regression is included
-because the specification requires it.
+We compared four models of increasing flexibility, from a trivial reference point to an interpretable linear
+model, a single tree that can capture thresholds and interactions, and an ensemble of trees.
 \begin{itemize}
   \item \textbf{Baseline:} always predicts the most frequent class (Medium/High).
   \item \textbf{Logistic regression} (L2 penalty, softmax over three classes): $C\in\{0.01,0.1,1,10,100\}$.
