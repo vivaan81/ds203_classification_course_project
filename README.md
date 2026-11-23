@@ -71,6 +71,7 @@ The full analysis and discussion are in the two notebooks.
 │   └── figures/                copies of the figures used in the report
 └── presentation/
     ├── HDI_presentation.pdf    the slides for our video
+    ├── HDI_presentation.pptx   the same slides as an editable PowerPoint file
     └── video_script.md         what each of us says in the video
 ```
 
