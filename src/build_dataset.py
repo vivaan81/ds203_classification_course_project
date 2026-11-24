@@ -1,18 +1,15 @@
-# Builds the country-level dataset for our DS203 HDI classification project.
+# makes the dataset for our DS203 project (one row per country)
 #
-# What it does:
-#   1. downloads the UNDP HDI table (our target) and the World Bank indicators + country list
-#   2. keeps only actual countries (drops regional / world totals)
-#   3. picks one value per country and indicator: the 2023 value, or if that's missing,
-#      the latest value from 2020-2022 (we never use anything after 2023)
-#   4. merges everything on the ISO3 country code and builds the target and DominantSector
-#   5. saves the result to data/hdi_dataset_2023.csv
+# HDI comes from UNDP, all the other indicators and the regions come from the World Bank.
+# for each indicator we take the 2023 value. if a country doesn't have one, we go back to
+# the latest value from 2020-2022. nothing after 2023 is used.
+# totals like "World" or "South Asia" are removed, then everything is joined on ISO3
+# and saved to data/hdi_dataset_2023.csv
 #
-# The raw downloads are kept in data/raw/ so the build can be re-run without internet.
-#
-# How to run (from the project folder):
-#   python src/build_dataset.py              -> uses the files in data/raw/ if they exist
-#   python src/build_dataset.py --refresh    -> downloads everything again
+# run it from the project folder:
+#   python src/build_dataset.py
+# this uses the files already in data/raw/, so it works without internet.
+# add --refresh to download everything again
 
 import argparse
 import json
@@ -32,7 +29,7 @@ HDI_URL = ("https://hdr.undp.org/sites/default/files/2025_HDR/"
            "HDR25_Composite_indices_complete_time_series.csv")
 WB_API = "https://api.worldbank.org/v2"
 
-# World Bank indicator code -> short column name we use
+# World Bank codes and the shorter names we use for them
 INDICATORS = {
     "NY.GDP.MKTP.KD.ZG": "gdp_growth",
     "FP.CPI.TOTL.ZG": "inflation",
@@ -45,12 +42,12 @@ INDICATORS = {
     "NE.TRD.GNFS.ZS": "trade",
 }
 
-# we download a few extra years so we can compare different look-back windows
+# earlier than we need, so that we can try different look-back windows
 FIRST_YEAR = 2015
 
 
 def get_world_bank(path, params):
-    # the World Bank API returns JSON split into pages, so keep asking until we have every page
+    # the API only gives one page at a time, so loop until the last one
     rows = []
     page = 1
     while True:
@@ -68,14 +65,14 @@ def get_world_bank(path, params):
 def download_raw_data(refresh):
     RAW_DIR.mkdir(parents=True, exist_ok=True)
 
-    # small log of where each file came from and when we downloaded it
+    # keep a note of where each file came from and when we got it
     log_file = RAW_DIR / "access_log.json"
     if log_file.exists():
         log = json.loads(log_file.read_text())
     else:
         log = {}
 
-    # 1) UNDP HDI table
+    # HDI table from UNDP
     hdi_file = RAW_DIR / "HDR25_Composite_indices_complete_time_series.csv"
     if refresh or not hdi_file.exists():
         response = requests.get(HDI_URL, timeout=300)
@@ -85,7 +82,7 @@ def download_raw_data(refresh):
     if "undp_hdi" not in log:
         log["undp_hdi"] = {"url": HDI_URL, "accessed": str(date.today())}
 
-    # 2) World Bank country list (gives us the region of each country)
+    # World Bank country list, we need this for the regions
     countries_file = RAW_DIR / "wb_countries.csv"
     if refresh or not countries_file.exists():
         countries = get_world_bank("country", {})
@@ -100,7 +97,7 @@ def download_raw_data(refresh):
         pd.DataFrame(rows).to_csv(countries_file, index=False)
         log["wb_countries"] = {"url": f"{WB_API}/country?format=json", "accessed": str(date.today())}
 
-    # 3) World Bank indicators, saved in long format (one row per country, indicator and year)
+    # the indicators (one row per country, indicator and year)
     indicators_file = RAW_DIR / "wb_indicators_long.csv"
     if refresh or not indicators_file.exists():
         rows = []
@@ -127,12 +124,12 @@ def download_raw_data(refresh):
 
 
 def pick_year(long_df, lookback):
-    # for every country + indicator, take the 2023 value if it exists,
-    # otherwise the most recent value within the look-back window
+    # use the 2023 value if there is one, if not go back to the
+    # most recent year that has a value (up to `lookback` years)
     oldest_year = REF_YEAR - lookback
     d = long_df.dropna(subset=["value"])
     d = d[(d["year"] >= oldest_year) & (d["year"] <= REF_YEAR)]
-    d = d.sort_values("year").groupby(["iso3", "indicator"]).tail(1)   # latest year per pair
+    d = d.sort_values("year").groupby(["iso3", "indicator"]).tail(1)   # last row = latest year
 
     values = d.pivot(index="iso3", columns="indicator", values="value")
     years = d.pivot(index="iso3", columns="indicator", values="year")
@@ -143,9 +140,9 @@ def pick_year(long_df, lookback):
 
 
 def add_dominant_sector(df):
-    # services share = 100 - agriculture - industry, then pick whichever sector is largest.
-    # left missing if: a share is missing, the two shares are from different years,
-    # or the numbers don't make sense (outside 0-100, or services comes out negative)
+    # whatever isn't agriculture or industry is counted as services, and the biggest one wins.
+    # we leave it missing if we don't have both shares, if they are from different years,
+    # or if the numbers don't make sense (outside 0-100, or services below 0)
     agri = df["agriculture_share"]
     ind = df["industry_share"]
     services = 100 - agri - ind
@@ -164,7 +161,7 @@ def add_dominant_sector(df):
 
 
 def hdi_to_class(hdi):
-    # 0 = Low (< 0.550), 1 = Medium/High (0.550 - 0.799), 2 = Very High (>= 0.800)
+    # 0 = Low (below 0.550), 1 = Medium/High, 2 = Very High (0.800 and above)
     return np.select([hdi < 0.550, hdi < 0.800], [0, 1], default=2)
 
 
@@ -172,28 +169,29 @@ def build(lookback, refresh):
     hdi_file, countries_file, indicators_file = download_raw_data(refresh)
     log = json.loads((RAW_DIR / "access_log.json").read_text())
 
-    # UNDP table: drop the aggregate rows (their codes start with ZZ, e.g. "World")
+    # codes starting with ZZ aren't countries (e.g. "World"), so remove them
     hdi = pd.read_csv(hdi_file, encoding="latin-1")
     hdi = hdi[~hdi["iso3"].str.startswith("ZZ")]
     hdi = hdi[["iso3", "country", f"hdi_{REF_YEAR}"]].rename(columns={f"hdi_{REF_YEAR}": "hdi"})
 
-    # World Bank countries: drop aggregates (they have region id "NA")
+    # in the World Bank list the non-countries have region id "NA"
+    # (keep_default_na=False, or else pandas reads that "NA" as a missing value)
     wb_countries = pd.read_csv(countries_file, keep_default_na=False)
     wb_countries = wb_countries[wb_countries["region_id"] != "NA"]
-    wb_countries["region"] = wb_countries["region"].str.strip()   # some names come with extra spaces
+    wb_countries["region"] = wb_countries["region"].str.strip()   # some regions have extra spaces
 
     values, years = pick_year(pd.read_csv(indicators_file), lookback)
 
-    # check which countries don't match between the two sources
+    # countries that are in one source but not in the other
     only_in_undp = sorted(set(hdi["iso3"]) - set(wb_countries["iso3"]))
     only_in_wb = sorted(set(wb_countries["iso3"]) - set(hdi["iso3"]))
 
-    # merge everything on ISO3
+    # put it all together using ISO3
     df = hdi.merge(wb_countries[["iso3", "region"]], on="iso3", how="inner")
     df = df.merge(values, left_on="iso3", right_index=True, how="left")
     df = df.merge(years, left_on="iso3", right_index=True, how="left")
 
-    # countries without an HDI value can't be labelled, so they are dropped
+    # no HDI means no class, so these countries have to go
     n_matched = len(df)
     no_hdi = df[df["hdi"].isna()][["iso3", "country"]].to_dict("records")
     df = df[df["hdi"].notna()].copy()
@@ -210,7 +208,7 @@ def build(lookback, refresh):
 
     df.to_csv(OUT_DIR / f"hdi_dataset_{REF_YEAR}.csv", index=False)
 
-    # summary printed at the end (these numbers also go in DATA_DICTIONARY.md)
+    # gets printed at the end, we copied these numbers into DATA_DICTIONARY.md
     summary = {
         "reference_year": REF_YEAR,
         "lookback_years": lookback,

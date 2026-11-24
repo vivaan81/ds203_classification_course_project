@@ -45,7 +45,7 @@ target leakage we do not use the HDI score itself, life expectancy, years of sch
 - Very High countries are classified almost perfectly. Low is the hardest class (the random forest
   finds 2 of the 5 Low test countries). All 7 random forest mistakes are within 0.04 of the 0.550 or 0.800 cut-offs.
 
-The full analysis and discussion are in the two notebooks.
+The code and outputs are in the two notebooks, and the discussion is in `report/report.pdf`.
 
 ## Folder structure
 
@@ -70,9 +70,7 @@ The full analysis and discussion are in the two notebooks.
 │   ├── report.pdf              the compiled report
 │   └── figures/                copies of the figures used in the report
 └── presentation/
-    ├── HDI_presentation.pdf    the slides for our video
-    ├── HDI_presentation.pptx   the same slides as an editable PowerPoint file
-    └── video_script.md         what each of us says in the video
+    └── HDI_presentation.pptx   the slides for our video
 ```
 
 ## Setup
